@@ -1,7 +1,5 @@
 package exercise;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,23 +15,20 @@ public class Assignment1 {
 
 	private static void readFileAndWrite() throws IOException {
 
-		try (BufferedWriter bw = (new BufferedWriter(
-				new FileWriter("C://Test_workspace//JavaSEAdvanced//Lecture2//writeReverse.txt")))) {
-			Path path = getReadFilePath();
-			byte[] bytes = Files.readAllBytes(path);
+		Path path = getReadFilePath();
+		byte[] bytes = Files.readAllBytes(path);
 
-			int i = 0;
-			int j = bytes.length - 1;
-			byte tmp;
-			while (j > i) {
-				tmp = bytes[j];
-				bytes[j] = bytes[i];
-				bytes[i] = tmp;
-				j--;
-				i++;
-			}
-			Files.write(getWriteFilePath(), bytes);
+		int i = 0;
+		int j = bytes.length - 1;
+		byte tmp;
+		while (j > i) {
+			tmp = bytes[j];
+			bytes[j] = bytes[i];
+			bytes[i] = tmp;
+			j--;
+			i++;
 		}
+		Files.write(getWriteFilePath(), bytes);
 
 	}
 
